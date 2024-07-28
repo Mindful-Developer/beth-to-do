@@ -2,14 +2,20 @@
   "name": "beth-to-do",
   "version": "1.0.50",
   "scripts": {
+    "watch:ts": "bun --watch src/index.ts",
+    "watch:css": "bun tailwindcss -i ./src/input.css -o ./public/styles.css --watch",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "bun run --watch src/index.ts"
+    "dev": "concurrently --kill-others \"npm run watch:css\" \"bun run watch:ts\""
   },
   "dependencies": {
+    "@elysiajs/html": "1.0",
+    "@elysiajs/static": "1.0",
+    "concurrently": "^8.2.2",
     "elysia": "latest"
   },
   "devDependencies": {
-    "bun-types": "latest"
+    "bun-types": "latest",
+    "tailwindcss": "^3.4.7"
   },
-  "module": "src/index.js"
+  "module": "src/index.ts"
 }
